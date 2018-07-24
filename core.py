@@ -1,8 +1,8 @@
 def deposit_fee(vehicle):
-    fee = vehicle[1] / 10
+    fee = vehicle['Replacement_fee'] / 10
     return fee
 
 
 def total_rental_fee(vehicle, days):
-    fee = vehicle[2] * days
+    fee = vehicle['Rental_fee'] * days
     return fee
