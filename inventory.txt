@@ -1,0 +1,7 @@
+name,stock,replacement_fee,daily_fee
+Sedans,10,
+SUVS,10,
+Vans,10,
+Trucks,10,
+Jeeps,10,
+Limos,10,
