@@ -33,6 +33,7 @@ def user_return(inventory):
             if stock == True:
                 choice['Stock'] += 1
                 print('Thank You for returning our vehicle! Have A Good Day!')
+                write_to_file_inv(inventory)
                 exit()
             else:
                 print(
@@ -45,6 +46,7 @@ def user_return(inventory):
             if stock == True:
                 choice['Stock'] += 1
                 print('Thank You for returning our vehicle! Have A Good Day!')
+                write_to_file_inv(inventory)
                 exit()
             else:
                 print(
@@ -57,6 +59,7 @@ def user_return(inventory):
             if stock == True:
                 choice['Stock'] += 1
                 print('Thank You for returning our vehicle! Have A Good Day!')
+                write_to_file_inv(inventory)
                 exit()
             else:
                 print(
@@ -74,6 +77,7 @@ def user_return(inventory):
                 print(
                     'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
                 )
+                write_to_file_inv(inventory)
                 exit()
         elif choice == '5':
             choice = inventory['Trucks']
@@ -81,6 +85,7 @@ def user_return(inventory):
             if stock == True:
                 choice['Stock'] += 1
                 print('Thank You for returning our vehicle! Have A Good Day!')
+                write_to_file_inv(inventory)
                 exit()
             else:
                 print(
@@ -154,8 +159,8 @@ def user_options(inventory):
     while True:
         choice = input('1--Return\n2--Rental\n3--Leave:')
         if choice == '1':
-            delivery = user_return(inventory)
-            return delivery
+            user_return(inventory)
+            exit()
         elif choice == '2':
             vehicle = user_rental(inventory)
             return vehicle
@@ -173,10 +178,10 @@ def employee_options():
     while True:
         choice = input('What would you like to do?')
         if choice == '1':
-            inv = open_file('inventory.txt')
+            inv = open_file_inv()
             print(inv)
         elif choice == '2':
-            receipt = open_file('history.txt')
+            receipt = open_file_history()
             print(receipt)
         elif choice == '3':
             print('Have A Good Day!')
@@ -188,7 +193,7 @@ def employee_options():
 def main():
     choice = login()
     if choice.upper() == 'U':
-        inventory = open_file('inventory.txt')
+        inventory = open_file_inv()
         vehicle = user_options(inventory)
         fee_1 = deposit_fee(vehicle)
         print(f'The deposit fee is ${fee_1}')
@@ -196,6 +201,16 @@ def main():
         fee_2 = total_rental_fee(vehicle, days)
         print(f'The total rental fee is ${fee_2}')
         print('Have A Good Day!')
+        write_to_file_inv(inventory)
+        time = datetime(2018, 7, 25)
+        history = {
+            'name': vehicle,
+            'time': time,
+            'days_rented': days,
+            'deposit': fee_1,
+            'profit': fee_2
+        }
+        write_to_file_history(history)
     else:
         employee_options()
 
