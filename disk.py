@@ -3,12 +3,6 @@ def parse_inventory_item(string):
     return [name, int(stock), int(replacement_fee), int(rental_fee)]
 
 
-def which_file_to_open(choice):
-    if choice == "U":
-        inventory = open_file('inventory.txt')
-        return inventory
-
-
 def open_file(file_name):
     # This was my first attempt at this
     # with open(file_name) as file:
