@@ -4,6 +4,7 @@ def deposit_fee(vehicle):
 
 
 def total_rental_fee(vehicle, days):
+    days = int(days)
     fee = vehicle['Rental_fee'] * days
     return fee
 
@@ -13,3 +14,10 @@ def can_return(vehicle):
         return True
     else:
         return False
+
+
+def is_in_stock(vehicle):
+    if vehicle['Stock'] == 0:
+        return False
+    else:
+        return True
