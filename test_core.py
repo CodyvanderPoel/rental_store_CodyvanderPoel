@@ -29,7 +29,7 @@ def test_deposit_fee_truck():
 
 def test_total_rental_fee_sedan():
     days = '7'
-    assert total_rental_fee(sedan, days) == 84
+    assert total_rental_fee(sedan, days) == 89.88
 
 
 def test_can_return():
