@@ -38,3 +38,11 @@ def test_can_return():
 
 def test_cannot_return():
     assert can_return(van) == False
+
+
+def test_is_not_in_stock():
+    assert is_in_stock(truck) == False
+
+
+def test_is_in_stock():
+    assert is_in_stock(van) == True
