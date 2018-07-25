@@ -30,19 +30,49 @@ def user_options(inventory):
         vehicle = input("Now what would you like to rent?")
         if vehicle == "1":
             vehicle = inventory['Sedans']
-            return vehicle
+            stock = is_in_stock(vehicle)
+            if stock == True:
+                return vehicle
+            else:
+                print(
+                    'This vehicle is currently out of stock. Please choose another vehicle!'
+                )
         elif vehicle == "2":
             vehicle = inventory['SUVS']
-            return vehicle
+            stock = is_in_stock(vehicle)
+            if stock == True:
+                return vehicle
+            else:
+                print(
+                    'This vehicle is currently out of stock. Please choose another vehicle!'
+                )
         elif vehicle == "3":
             vehicle = inventory['Minivans']
-            return vehicle
+            stock = is_in_stock(vehicle)
+            if stock == True:
+                return vehicle
+            else:
+                print(
+                    'This vehicle is currently out of stock. Please choose another vehicle!'
+                )
         elif vehicle == "4":
             vehicle = inventory['Vans']
-            return vehicle
+            stock = is_in_stock(vehicle)
+            if stock == True:
+                return vehicle
+            else:
+                print(
+                    'This vehicle is currently out of stock. Please choose another vehicle!'
+                )
         elif vehicle == "5":
             vehicle = inventory['Trucks']
-            return vehicle
+            stock = is_in_stock(vehicle)
+            if stock == True:
+                return vehicle
+            else:
+                print(
+                    'This vehicle is currently out of stock. Please choose another vehicle!'
+                )
         else:
             print('That Is Not an Option!')
 
