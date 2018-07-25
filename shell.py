@@ -29,32 +29,47 @@ def user_options(inventory):
     while True:
         vehicle = input("Now what would you like to rent?")
         if vehicle == "1":
-            vehicle = stuff['Sedans']
+            vehicle = inventory['Sedans']
             return vehicle
         elif vehicle == "2":
-            vehicle = stuff['SUVS']
+            vehicle = inventory['SUVS']
             return vehicle
         elif vehicle == "3":
-            vehicle = stuff['Minivans']
+            vehicle = inventory['Minivans']
             return vehicle
         elif vehicle == "4":
-            vehicle = stuff['Vans']
+            vehicle = inventory['Vans']
             return vehicle
         elif vehicle == "5":
-            vehicle = stuff['Trucks']
+            vehicle = inventory['Trucks']
             return vehicle
         else:
             print('That Is Not an Option!')
 
 
 def employee_options():
-    pass
+    print(
+        'Employee Options:\n1--Check Stock\n2--Review Transactions\n3--Clock Out'
+    )
+    while True:
+        choice = input('What would you like to do?')
+        if choice == '1':
+            inv = open_file('inventory.txt')
+            print(inv)
+        elif choice == '2':
+            receipt = open_file('history.txt')
+            print(receipt)
+        elif choice == '3':
+            print('Have A Good Day!')
+            exit()
+        else:
+            print('That is not an option!')
 
 
 def main():
     choice = login()
-    inventory = which_file_to_open(choice)
     if choice.upper() == 'U':
+        inventory = open_file('inventory.txt')
         vehicle = user_options(inventory)
         fee_1 = deposit_fee(vehicle)
         print(f'The deposit fee is ${fee_1}')
@@ -62,9 +77,9 @@ def main():
         days = int(days)
         fee_2 = total_rental_fee(vehicle, days)
         print(f'The total rental fee is ${fee_2}')
+        print('Have A Good Day!')
     else:
         employee_options()
-    print('Have A Good Day!')
 
 
 if __name__ == '__main__':
