@@ -74,7 +74,6 @@ def main():
         fee_1 = deposit_fee(vehicle)
         print(f'The deposit fee is ${fee_1}')
         days = input('How many days would you like to rent the vehicle?')
-        days = int(days)
         fee_2 = total_rental_fee(vehicle, days)
         print(f'The total rental fee is ${fee_2}')
         print('Have A Good Day!')
