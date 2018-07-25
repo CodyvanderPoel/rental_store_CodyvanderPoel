@@ -190,6 +190,16 @@ def employee_options():
             print('That is not an option!')
 
 
+def days_is_digit(days, vehicle):
+    while True:
+        days = input('How many days would you like to rent the vehicle?')
+        if days.isdigit():
+            fee_2 = total_rental_fee(vehicle, days)
+            return fee_2
+        else:
+            print('I am sorry that is not a number sir')
+
+
 def main():
     choice = login()
     if choice.upper() == 'U':
@@ -198,7 +208,7 @@ def main():
         fee_1 = deposit_fee(vehicle)
         print(f'The deposit fee is ${fee_1}')
         days = input('How many days would you like to rent the vehicle?')
-        fee_2 = total_rental_fee(vehicle, days)
+        fee_2 = days_is_digit(days, vehicle)
         print(f'The total rental fee is ${fee_2}')
         print('Have A Good Day!')
         write_to_file_inv(inventory)
