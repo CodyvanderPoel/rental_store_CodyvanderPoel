@@ -22,59 +22,80 @@ def login():
             print("The option you have chosen is not available!")
 
 
-def user_options(inventory):
+def user_rental(inventory):
     print(
         "These are our current available vehicles:\n1--Sedans\n2--SUVS\n3--Minivans\n4--Vans\n5--Trucks"
     )
-    while True:
-        vehicle = input("Now what would you like to rent?")
-        if vehicle == "1":
-            vehicle = inventory['Sedans']
-            stock = is_in_stock(vehicle)
-            if stock == True:
-                return vehicle
-            else:
-                print(
-                    'This vehicle is currently out of stock. Please choose another vehicle!'
-                )
-        elif vehicle == "2":
-            vehicle = inventory['SUVS']
-            stock = is_in_stock(vehicle)
-            if stock == True:
-                return vehicle
-            else:
-                print(
-                    'This vehicle is currently out of stock. Please choose another vehicle!'
-                )
-        elif vehicle == "3":
-            vehicle = inventory['Minivans']
-            stock = is_in_stock(vehicle)
-            if stock == True:
-                return vehicle
-            else:
-                print(
-                    'This vehicle is currently out of stock. Please choose another vehicle!'
-                )
-        elif vehicle == "4":
-            vehicle = inventory['Vans']
-            stock = is_in_stock(vehicle)
-            if stock == True:
-                return vehicle
-            else:
-                print(
-                    'This vehicle is currently out of stock. Please choose another vehicle!'
-                )
-        elif vehicle == "5":
-            vehicle = inventory['Trucks']
-            stock = is_in_stock(vehicle)
-            if stock == True:
-                return vehicle
-            else:
-                print(
-                    'This vehicle is currently out of stock. Please choose another vehicle!'
-                )
+    vehicle = input("Now what would you like to rent?")
+    if vehicle == "1":
+        vehicle = inventory['Sedans']
+        stock = is_in_stock(vehicle)
+        if stock == True:
+            vehicle['Stock'] -= 1
+            return vehicle
         else:
-            print('That Is Not an Option!')
+            print(
+                'This vehicle is currently out of stock. Please choose another vehicle!'
+            )
+    elif vehicle == "2":
+        vehicle = inventory['SUVS']
+        stock = is_in_stock(vehicle)
+        if stock == True:
+            vehicle['Stock'] -= 1
+            return vehicle
+        else:
+            print(
+                'This vehicle is currently out of stock. Please choose another vehicle!'
+            )
+    elif vehicle == "3":
+        vehicle = inventory['Minivans']
+        stock = is_in_stock(vehicle)
+        if stock == True:
+            vehicle['Stock'] -= 1
+            return vehicle
+        else:
+            print(
+                'This vehicle is currently out of stock. Please choose another vehicle!'
+            )
+    elif vehicle == "4":
+        vehicle = inventory['Vans']
+        stock = is_in_stock(vehicle)
+        if stock == True:
+            vehicle['Stock'] -= 1
+            return vehicle
+        else:
+            print(
+                'This vehicle is currently out of stock. Please choose another vehicle!'
+            )
+    elif vehicle == "5":
+        vehicle = inventory['Trucks']
+        stock = is_in_stock(vehicle)
+        if stock == True:
+            vehicle['Stock'] -= 1
+            return vehicle
+        else:
+            print(
+                'This vehicle is currently out of stock. Please choose another vehicle!'
+            )
+    else:
+        print('That Is Not an Option!')
+
+
+def user_options(inventory):
+    while True:
+        choice = input('1--Return\n2--Rental\n3--Leave:')
+        if choice == '1':
+            pass
+            #delivery = user_return(inventory)
+            #return delivery
+        elif choice == '2':
+            vehicle = user_rental(inventory)
+            return vehicle
+        elif choice == '3':
+            print('Have A Good Day!')
+            exit()
+        else:
+            print('That is not an option!')
 
 
 def employee_options():
