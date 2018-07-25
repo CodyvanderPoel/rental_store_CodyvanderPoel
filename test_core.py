@@ -4,7 +4,7 @@ sedan = {'Stock': 10, 'Replacement_fee': 5000, 'Rental_fee': 12}
 suv = {'Stock': 10, 'Replacement_fee': 7000, 'Rental_fee': 15}
 mini = {'Stock': 10, 'Replacement_fee': 8000, 'Rental_fee': 16}
 van = {'Stock': 10, 'Replacement_fee': 10000, 'Rental_fee': 17}
-truck = {'Stock': 10, 'Replacement_fee': 12500, 'Rental_fee': 20}
+truck = {'Stock': 0, 'Replacement_fee': 12500, 'Rental_fee': 20}
 
 
 def test_deposit_fee_sedan():
@@ -25,3 +25,16 @@ def test_deposit_fee_van():
 
 def test_deposit_fee_truck():
     assert deposit_fee(truck) == 1250
+
+
+def test_total_rental_fee_sedan():
+    days = '7'
+    assert total_rental_fee(sedan, days) == 84
+
+
+def test_can_return():
+    assert can_return(truck) == True
+
+
+def test_cannot_return():
+    assert can_return(van) == False
