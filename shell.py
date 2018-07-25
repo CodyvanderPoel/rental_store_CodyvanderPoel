@@ -22,6 +22,75 @@ def login():
             print("The option you have chosen is not available!")
 
 
+def user_return(inventory):
+    while True:
+        choice = input(
+            "What vehicle are you returning to us today?\n1--Sedan\n2--SUV\n3--Minivan\n4--Van\n5--Truck:"
+        )
+        if choice == '1':
+            choice = inventory['Sedans']
+            stock = can_return(choice)
+            if stock == True:
+                choice['Stock'] += 1
+                print('Thank You for returning our vehicle! Have A Good Day!')
+                exit()
+            else:
+                print(
+                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
+                )
+                exit()
+        elif choice == '2':
+            choice = inventory['SUVS']
+            stock = can_return(choice)
+            if stock == True:
+                choice['Stock'] += 1
+                print('Thank You for returning our vehicle! Have A Good Day!')
+                exit()
+            else:
+                print(
+                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
+                )
+                exit()
+        elif choice == '3':
+            choice = inventory['Minivans']
+            stock = can_return(choice)
+            if stock == True:
+                choice['Stock'] += 1
+                print('Thank You for returning our vehicle! Have A Good Day!')
+                exit()
+            else:
+                print(
+                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
+                )
+                exit()
+        elif choice == '4':
+            choice = inventory['Vans']
+            stock = can_return(choice)
+            if stock == True:
+                choice['Stock'] += 1
+                print('Thank You for returning our vehicle! Have A Good Day!')
+                exit()
+            else:
+                print(
+                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
+                )
+                exit()
+        elif choice == '5':
+            choice = inventory['Trucks']
+            stock = can_return(choice)
+            if stock == True:
+                choice['Stock'] += 1
+                print('Thank You for returning our vehicle! Have A Good Day!')
+                exit()
+            else:
+                print(
+                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
+                )
+                exit()
+        else:
+            print('That is not an option!')
+
+
 def user_rental(inventory):
     print(
         "These are our current available vehicles:\n1--Sedans\n2--SUVS\n3--Minivans\n4--Vans\n5--Trucks"
@@ -85,9 +154,8 @@ def user_options(inventory):
     while True:
         choice = input('1--Return\n2--Rental\n3--Leave:')
         if choice == '1':
-            pass
-            #delivery = user_return(inventory)
-            #return delivery
+            delivery = user_return(inventory)
+            return delivery
         elif choice == '2':
             vehicle = user_rental(inventory)
             return vehicle
