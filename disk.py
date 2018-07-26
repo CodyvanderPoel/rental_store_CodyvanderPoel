@@ -48,7 +48,7 @@ def inventory_to_string(inventory):
     st = ''
     for key in inventory:
         item = inventory[key]
-        st += '{},{},{},{}\n'.format(
+        st += '\n{},{},{},{}\n'.format(
             key,
             item['Stock'],
             item['Replacement_fee'],
@@ -61,8 +61,8 @@ def inventory_to_string(inventory):
 def history_to_string(history):
     st = ''
     item = history
-    st += '\n,{},{},{},{}'.format(item['time'], item['days_rented'],
-                                  item['deposit'], item['profit'])
+    st += '\n{},{},{},{}\n'.format(item['time'], item['days_rented'],
+                                   item['deposit'], item['profit'])
     return st.rstrip()
 
 
@@ -74,7 +74,6 @@ def write_to_file_inv(inventory):
 
 
 def write_to_file_history(history):
-    with open('history.txt', 'w') as file:
+    with open('history.txt', 'a') as file:
         file.write(
-            f'name,time,days_rented,deposit,profit{history_to_string(history)}'
-        )
+            f'time,days_rented,deposit,profit{history_to_string(history)}\n')
