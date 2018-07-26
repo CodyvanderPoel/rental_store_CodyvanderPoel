@@ -1,2 +1,1 @@
-name,rental_date,days_rented,deposit,total_profit
 
