@@ -8,12 +8,12 @@ def parse_history_item(string):
     return [time, days_rented, deposit, profit]
 
 
-def open_file_inv():
+def open_file(file_name):
     # This was my first attempt at this
     # with open(file_name) as file:
     #     contents = {file.readlines()}
     #     return contents
-    with open('inventory.txt') as file:
+    with open(file_name) as file:
         string = file.read()
         inventory = {}
         lines = string.split('\n')[1:]
@@ -21,6 +21,7 @@ def open_file_inv():
             if line:
                 d = parse_inventory_item(line)
                 inventory[d[0]] = {
+                    'Name': d[0],
                     'Stock': d[1],
                     'Replacement_fee': d[2],
                     'Rental_fee': d[3]
@@ -75,5 +76,4 @@ def write_to_file_inv(inventory):
 
 def write_to_file_history(history):
     with open('history.txt', 'a') as file:
-        file.write(
-            f'time,days_rented,deposit,profit{history_to_string(history)}\n')
+        file.write(f'{history_to_string(history)}\n')
