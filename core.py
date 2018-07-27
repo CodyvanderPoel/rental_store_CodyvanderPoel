@@ -5,7 +5,7 @@ def deposit_fee(vehicle):
 
 def total_rental_fee(vehicle, days):
     days = int(days)
-    fee = vehicle['Rental_fee'] * days
+    fee = vehicle['Daily_fee'] * days
     tax = 0.07
     fee += fee * tax
     return round(fee, 2)
@@ -23,3 +23,10 @@ def is_in_stock(vehicle):
         return False
     else:
         return True
+
+
+def get_inv_options(inventory):
+    return '\n'.join([
+        '{}--{}'.format(str(i + 1), item)
+        for i, item in enumerate(inventory.values())
+    ])
