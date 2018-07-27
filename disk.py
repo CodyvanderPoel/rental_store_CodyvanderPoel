@@ -24,7 +24,7 @@ def open_file(file_name):
                     'Name': d[0],
                     'Stock': d[1],
                     'Replacement_fee': d[2],
-                    'Rental_fee': d[3]
+                    'Daily_fee': d[3]
                 }
         return inventory
 
@@ -53,7 +53,7 @@ def inventory_to_string(inventory):
             key,
             item['Stock'],
             item['Replacement_fee'],
-            item['Rental_fee'],
+            item['Daily_fee'],
         )
 
     return st.rstrip()
