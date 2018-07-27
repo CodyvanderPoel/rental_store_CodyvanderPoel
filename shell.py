@@ -6,8 +6,8 @@ from datetime import datetime
 
 def login():
     while True:
-        choice = input("[U]ser or [E]mployee or [L]eave:")
-        if choice.upper() == 'U':
+        choice = input("[C]ustomer or [E]mployee or [L]eave:")
+        if choice.upper() == 'C':
             print("Welcome To Cody's Car Rental!")
             sleep(.5)
             return choice
@@ -22,7 +22,7 @@ def login():
             print("The option you have chosen is not available!")
 
 
-def user_return(inventory):
+def customer_return(inventory):
     while True:
         choice = input(
             "What vehicle are you returning to us today?\n1--Sedan\n2--SUV\n3--Minivan\n4--Van\n5--Truck:"
@@ -96,10 +96,9 @@ def user_return(inventory):
             print('That is not an option!')
 
 
-def user_rental(inventory):
-    print(
-        "These are our current available vehicles:\n1--Sedans\n2--SUVS\n3--Minivans\n4--Vans\n5--Trucks"
-    )
+def customer_rental(inventory):
+    options = get_inv_options(inventory)
+    print('Here are our available options:\n', options)
     vehicle = input("Now what would you like to rent?")
     if vehicle == "1":
         vehicle = inventory['Sedans']
@@ -155,14 +154,14 @@ def user_rental(inventory):
         print('That Is Not an Option!')
 
 
-def user_options(inventory):
+def customer_options(inventory):
     while True:
         choice = input('1--Return\n2--Rental\n3--Leave:')
         if choice == '1':
-            user_return(inventory)
+            customer_return(inventory)
             exit()
         elif choice == '2':
-            vehicle = user_rental(inventory)
+            vehicle = customer_rental(inventory)
             return vehicle
         elif choice == '3':
             print('Have A Good Day!')
@@ -178,7 +177,7 @@ def employee_options():
     while True:
         choice = input('What would you like to do?')
         if choice == '1':
-            inv = open_file_inv()
+            inv = open_file('inventory.txt')
             print(inv)
         elif choice == '2':
             receipt = open_file_history()
@@ -201,9 +200,9 @@ def get_days():
 
 def main():
     choice = login()
-    if choice.upper() == 'U':
-        inventory = open_file_inv()
-        vehicle = user_options(inventory)
+    if choice.upper() == 'C':
+        inventory = open_file('inventory.txt')
+        vehicle = customer_options(inventory)
         fee_1 = deposit_fee(vehicle)
         print(f'The deposit fee is ${fee_1}')
         days = get_days()
