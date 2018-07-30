@@ -6,6 +6,27 @@ mini = {'Stock': 10, 'Replacement_fee': 8000, 'Rental_fee': 16}
 van = {'Stock': 10, 'Replacement_fee': 10000, 'Rental_fee': 17}
 truck = {'Stock': 0, 'Replacement_fee': 12500, 'Rental_fee': 20}
 
+inventory = {
+    '1': {
+        'Name': 'Sedan',
+        'Stock': 10,
+        'Replacement_fee': 5000,
+        'Rental_fee': 12
+    },
+    '2': {
+        'Name': 'SUV',
+        'Stock': 10,
+        'Replacement_fee': 7000,
+        'Rental_fee': 15
+    },
+    '3': {
+        'Name': 'Truck',
+        'Stock': 0,
+        'Replacement_fee': 12500,
+        'Rental_fee': 20
+    }
+}
+
 
 def test_deposit_fee_sedan():
     assert deposit_fee(sedan) == 500
@@ -46,3 +67,9 @@ def test_is_not_in_stock():
 
 def test_is_in_stock():
     assert is_in_stock(van) == True
+
+
+def test_get_inv_options():
+    result = get_inv_options(inventory)
+
+    assert result == '1--Sedan\n2--SUV\n3--Truck'
