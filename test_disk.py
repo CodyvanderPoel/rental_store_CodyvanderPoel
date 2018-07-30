@@ -3,6 +3,21 @@ from bcca.test import fake_file
 
 inv_string = '1,Jim,5,50,5'
 hist_string = '12:00,7,500,173.27'
+inventory = {
+    '1': {
+        'Name': 'Sedans',
+        'Stock': 10,
+        'Replacement_fee': 5000,
+        'Daily_fee': 12
+    }
+}
+history = {
+    '2018-07-30 10:57:38.919233': {
+        'Days Rented': '7',
+        'Deposit': '1000.0',
+        'Profit': '127.33'
+    }
+}
 
 
 def test_parse_inventory_item():
@@ -48,3 +63,15 @@ def test_open_file_history():
             'Profit': '127.33'
         }
     }
+
+
+def test_inventory_to_string():
+    result = inventory_to_string(inventory)
+
+    assert result == '\n1,Sedans,10,5000,12'
+
+
+def test_history_to_string():
+    result = history_to_string(history)
+
+    assert result == '\n2018-07-30 10:57:38.919233,7,1000.0,127.33'
