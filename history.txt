@@ -1,1 +1,2 @@
+time,days_rented,deposit,profit
 
