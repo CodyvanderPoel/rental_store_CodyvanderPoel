@@ -44,14 +44,15 @@ def customer_return(inventory):
 def customer_rental(inventory):
     options = get_inv_options(inventory)
     print('Here are our available options:\n', options)
-    choice = input("Now what would you like to rent?")
-    if choice in options:
-        vehicle = inventory[choice]
-        if is_in_stock(vehicle) == True:
-            vehicle['Stock'] -= 1
-            return vehicle
-    else:
-        print('That is not an option!')
+    while True:
+        choice = input("Now what would you like to rent?")
+        if choice in options:
+            vehicle = inventory[choice]
+            if is_in_stock(vehicle) == True:
+                vehicle['Stock'] -= 1
+                return vehicle
+        else:
+            print('That is not an option!')
 
 
 def customer_options(inventory):
