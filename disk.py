@@ -68,10 +68,10 @@ def history_to_string(history):
 def write_to_file_inv(inventory):
     with open('inventory.txt', 'w') as file:
         file.write(
-            f'number,name,stock,replacement_fee,daily_fee\n{inventory_to_string(inventory)}'
+            f'number,name,stock,replacement_fee,daily_fee{inventory_to_string(inventory)}'
         )
 
 
 def write_to_file_history(history):
     with open('history.txt', 'a') as file:
-        file.write(f'{history_to_string(history)}\n')
+        file.write(f'{history_to_string(history)}')
