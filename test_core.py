@@ -6,7 +6,7 @@ mini = {'Stock': 10, 'Replacement_fee': 8000, 'Rental_fee': 16}
 van = {'Stock': 10, 'Replacement_fee': 10000, 'Rental_fee': 17}
 truck = {'Stock': 0, 'Replacement_fee': 12500, 'Rental_fee': 20}
 
-inventory = {
+inventory1 = {
     '1': {
         'Name': 'Sedan',
         'Stock': 10,
@@ -27,9 +27,7 @@ inventory = {
     }
 }
 
-
-def test_deposit_fee_sedan():
-    assert deposit_fee(sedan) == 500
+inventory2 = {'1': {'Name': 'a'}, '2': {'Name': 'b'}}
 
 
 def test_deposit_fee_suv():
@@ -69,7 +67,13 @@ def test_is_in_stock():
     assert is_in_stock(van) == True
 
 
-def test_get_inv_options():
-    result = get_inv_options(inventory)
+def test_get_inv_options1():
+    result = get_inv_options(inventory1)
 
     assert result == '1--Sedan\n2--SUV\n3--Truck'
+
+
+def test_get_inv_options2():
+    result = get_inv_options(inventory2)
+
+    assert result == '1--a\n2--b'
