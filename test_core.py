@@ -67,13 +67,13 @@ def test_is_in_stock():
     assert is_in_stock(van) == True
 
 
-def test_get_inv_options1():
-    result = get_inv_options(inventory1)
+def test_make_inv_options1():
+    result = make_inv_options(inventory1)
 
     assert result == '1--Sedan\n2--SUV\n3--Truck'
 
 
-def test_get_inv_options2():
-    result = get_inv_options(inventory2)
+def test_make_inv_options2():
+    result = make_inv_options(inventory2)
 
     assert result == '1--a\n2--b'
