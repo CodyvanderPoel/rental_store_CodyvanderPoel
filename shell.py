@@ -24,74 +24,19 @@ def login():
 
 def customer_return(inventory):
     while True:
-        choice = input(
-            "What vehicle are you returning to us today?\n1--Sedan\n2--SUV\n3--Minivan\n4--Van\n5--Truck:"
-        )
-        if choice == '1':
-            choice = inventory['Sedans']
-            stock = can_return(choice)
-            if stock == True:
-                choice['Stock'] += 1
+        options = get_inv_options(inventory)
+        choice = input(f'{options}\nWhat are you returning today?')
+        if choice in options:
+            vehicle = inventory[choice]
+            if can_return(vehicle) == True:
+                vehicle['Stock'] += 1
                 print('Thank You for returning our vehicle! Have A Good Day!')
                 write_to_file_inv(inventory)
-                exit()
             else:
                 print(
                     'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
                 )
-                exit()
-        elif choice == '2':
-            choice = inventory['SUVS']
-            stock = can_return(choice)
-            if stock == True:
-                choice['Stock'] += 1
-                print('Thank You for returning our vehicle! Have A Good Day!')
-                write_to_file_inv(inventory)
-                exit()
-            else:
-                print(
-                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
-                )
-                exit()
-        elif choice == '3':
-            choice = inventory['Minivans']
-            stock = can_return(choice)
-            if stock == True:
-                choice['Stock'] += 1
-                print('Thank You for returning our vehicle! Have A Good Day!')
-                write_to_file_inv(inventory)
-                exit()
-            else:
-                print(
-                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
-                )
-                exit()
-        elif choice == '4':
-            choice = inventory['Vans']
-            stock = can_return(choice)
-            if stock == True:
-                choice['Stock'] += 1
-                print('Thank You for returning our vehicle! Have A Good Day!')
-                exit()
-            else:
-                print(
-                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
-                )
-                write_to_file_inv(inventory)
-                exit()
-        elif choice == '5':
-            choice = inventory['Trucks']
-            stock = can_return(choice)
-            if stock == True:
-                choice['Stock'] += 1
-                print('Thank You for returning our vehicle! Have A Good Day!')
-                write_to_file_inv(inventory)
-                exit()
-            else:
-                print(
-                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
-                )
-                exit()
+            exit()
         else:
             print('That is not an option!')
 
@@ -99,59 +44,14 @@ def customer_return(inventory):
 def customer_rental(inventory):
     options = get_inv_options(inventory)
     print('Here are our available options:\n', options)
-    vehicle = input("Now what would you like to rent?")
-    if vehicle == "1":
-        vehicle = inventory['Sedans']
-        stock = is_in_stock(vehicle)
-        if stock == True:
+    choice = input("Now what would you like to rent?")
+    if choice in options:
+        vehicle = inventory[choice]
+        if is_in_stock(vehicle) == True:
             vehicle['Stock'] -= 1
             return vehicle
-        else:
-            print(
-                'This vehicle is currently out of stock. Please choose another vehicle!'
-            )
-    elif vehicle == "2":
-        vehicle = inventory['SUVS']
-        stock = is_in_stock(vehicle)
-        if stock == True:
-            vehicle['Stock'] -= 1
-            return vehicle
-        else:
-            print(
-                'This vehicle is currently out of stock. Please choose another vehicle!'
-            )
-    elif vehicle == "3":
-        vehicle = inventory['Minivans']
-        stock = is_in_stock(vehicle)
-        if stock == True:
-            vehicle['Stock'] -= 1
-            return vehicle
-        else:
-            print(
-                'This vehicle is currently out of stock. Please choose another vehicle!'
-            )
-    elif vehicle == "4":
-        vehicle = inventory['Vans']
-        stock = is_in_stock(vehicle)
-        if stock == True:
-            vehicle['Stock'] -= 1
-            return vehicle
-        else:
-            print(
-                'This vehicle is currently out of stock. Please choose another vehicle!'
-            )
-    elif vehicle == "5":
-        vehicle = inventory['Trucks']
-        stock = is_in_stock(vehicle)
-        if stock == True:
-            vehicle['Stock'] -= 1
-            return vehicle
-        else:
-            print(
-                'This vehicle is currently out of stock. Please choose another vehicle!'
-            )
     else:
-        print('That Is Not an Option!')
+        print('That is not an option!')
 
 
 def customer_options(inventory):
