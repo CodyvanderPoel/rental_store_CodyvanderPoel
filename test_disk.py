@@ -32,3 +32,19 @@ def test_open_file():
             'Daily_fee': 12
         }
     }
+
+
+@fake_file({
+    'history.txt':
+    'time,days_rented,deposit,profit\n2018-07-30 10:57:38.919233,7,1000.0,127.33'
+})
+def test_open_file_history():
+    result = open_file_history()
+
+    assert result == {
+        '2018-07-30 10:57:38.919233': {
+            'Days Rented': '7',
+            'Deposit': '1000.0',
+            'Profit': '127.33'
+        }
+    }
