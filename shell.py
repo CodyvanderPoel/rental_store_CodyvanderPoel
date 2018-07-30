@@ -24,7 +24,7 @@ def login():
 
 def customer_return(inventory):
     while True:
-        options = get_inv_options(inventory)
+        options = make_inv_options(inventory)
         choice = input(f'{options}\nWhat are you returning today?')
         if choice in options:
             vehicle = inventory[choice]
@@ -42,7 +42,7 @@ def customer_return(inventory):
 
 
 def customer_rental(inventory):
-    options = get_inv_options(inventory)
+    options = make_inv_options(inventory)
     print('Here are our available options:\n', options)
     while True:
         choice = input("Now what would you like to rent?")
