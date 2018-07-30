@@ -1,6 +1,11 @@
-name,stock,replacement_fee,daily_fee
-Sedans,10,5000,12
-SUVS,10,7000,15
-Minivans,10,8000,16
-Vans,10,10000,17
-Trucks,10,12500,20
+number,name,stock,replacement_fee,daily_fee
+
+1,Sedans,10,5000,12
+
+2,SUVS,10,7000,15
+
+3,Minivans,10,8000,16
+
+4,Vans,10,10000,17
+
+5,Trucks,10,12500,20
