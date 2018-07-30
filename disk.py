@@ -59,9 +59,8 @@ def inventory_to_string(inventory):
 def history_to_string(history):
     st = ''
     for key in history:
-        item = history[key]
-    st += '\n{},{},{},{}\n'.format(key, item['Days Rented'], item['Deposit'],
-                                   item['Profit'])
+    st += '\n{},{},{},{}\n'.format(key, history['Days Rented'], history['Deposit'],
+                                   history['Profit'])
     return st.rstrip()
 
 

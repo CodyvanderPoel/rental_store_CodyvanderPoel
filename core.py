@@ -5,7 +5,7 @@ def deposit_fee(vehicle):
 
 def total_rental_fee(vehicle, days):
     days = int(days)
-    fee = vehicle['Rental_fee'] * days
+    fee = vehicle['Daily_fee'] * days
     tax = 1.07
     fee *= tax
     return round(fee, 2)

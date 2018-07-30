@@ -25,7 +25,7 @@ def login():
 def customer_return(inventory):
     while True:
         options = make_inv_options(inventory)
-        choice = input(f'{options}\nWhat are you returning today?')
+        choice = input(f'What are you returning today?\n{options}\n???')
         if choice in options:
             vehicle = inventory[choice]
             if can_return(vehicle) == True:
