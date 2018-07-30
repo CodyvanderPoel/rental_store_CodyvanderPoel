@@ -25,7 +25,7 @@ def is_in_stock(vehicle):
         return True
 
 
-def get_inv_options(inventory):
+def make_inv_options(inventory):
     return '\n'.join([
         '{}--{}'.format(str(i + 1), item['Name'])
         for i, item in enumerate(inventory.values())
