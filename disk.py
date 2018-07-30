@@ -1,6 +1,6 @@
 def parse_inventory_item(string):
-    name, stock, replacement_fee, rental_fee = string.split(',')
-    return [name, int(stock), int(replacement_fee), int(rental_fee)]
+    number, name, stock, replacement_fee, rental_fee = string.split(',')
+    return [number, name, int(stock), int(replacement_fee), int(rental_fee)]
 
 
 def parse_history_item(string):
@@ -21,10 +21,10 @@ def open_file(file_name):
             if line:
                 d = parse_inventory_item(line)
                 inventory[d[0]] = {
-                    'Name': d[0],
-                    'Stock': d[1],
-                    'Replacement_fee': d[2],
-                    'Daily_fee': d[3]
+                    'Name': d[1],
+                    'Stock': d[2],
+                    'Replacement_fee': d[3],
+                    'Daily_fee': d[4]
                 }
         return inventory
 
@@ -49,12 +49,9 @@ def inventory_to_string(inventory):
     st = ''
     for key in inventory:
         item = inventory[key]
-        st += '\n{},{},{},{}\n'.format(
-            key,
-            item['Stock'],
-            item['Replacement_fee'],
-            item['Daily_fee'],
-        )
+        st += '\n{},{},{},{},{}\n'.format(key, item['Name'], item['Stock'],
+                                          item['Replacement_fee'],
+                                          item['Daily_fee'])
 
     return st.rstrip()
 
@@ -70,7 +67,7 @@ def history_to_string(history):
 def write_to_file_inv(inventory):
     with open('inventory.txt', 'w') as file:
         file.write(
-            f'name,stock,replacement_fee,daily_fee\n{inventory_to_string(inventory)}'
+            f'number,name,stock,replacement_fee,daily_fee\n{inventory_to_string(inventory)}'
         )
 
 
