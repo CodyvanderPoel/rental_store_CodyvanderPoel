@@ -1,29 +1,29 @@
 from core import *
 
-sedan = {'Stock': 10, 'Replacement_fee': 5000, 'Rental_fee': 12}
-suv = {'Stock': 10, 'Replacement_fee': 7000, 'Rental_fee': 15}
-mini = {'Stock': 10, 'Replacement_fee': 8000, 'Rental_fee': 16}
-van = {'Stock': 10, 'Replacement_fee': 10000, 'Rental_fee': 17}
-truck = {'Stock': 0, 'Replacement_fee': 12500, 'Rental_fee': 20}
+sedan = {'Stock': 10, 'Replacement_fee': 5000, 'Daily_fee': 12}
+suv = {'Stock': 10, 'Replacement_fee': 7000, 'Daily_fee': 15}
+mini = {'Stock': 10, 'Replacement_fee': 8000, 'Daily_fee': 16}
+van = {'Stock': 10, 'Replacement_fee': 10000, 'Daily_fee': 17}
+truck = {'Stock': 0, 'Replacement_fee': 12500, 'Daily_fee': 20}
 
 inventory1 = {
     '1': {
         'Name': 'Sedan',
         'Stock': 10,
         'Replacement_fee': 5000,
-        'Rental_fee': 12
+        'Daily_fee': 12
     },
     '2': {
         'Name': 'SUV',
         'Stock': 10,
         'Replacement_fee': 7000,
-        'Rental_fee': 15
+        'Daily_fee': 15
     },
     '3': {
         'Name': 'Truck',
         'Stock': 0,
         'Replacement_fee': 12500,
-        'Rental_fee': 20
+        'Daily_fee': 20
     }
 }
 
