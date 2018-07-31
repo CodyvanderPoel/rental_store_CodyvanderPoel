@@ -9,10 +9,6 @@ def parse_history_item(string):
 
 
 def open_file(file_name):
-    # This was my first attempt at this
-    # with open(file_name) as file:
-    #     contents = {file.readlines()}
-    #     return contents
     with open(file_name) as file:
         string = file.read()
         inventory = {}
@@ -33,16 +29,8 @@ def open_file_history():
     with open('history.txt') as file:
         string = file.read()
         lines = string.split('\n')[1:]
-        history = {}
         for line in lines:
-            if line:
-                d = parse_history_item(line)
-                history[d[0]] = {
-                    'Days Rented': d[1],
-                    'Deposit': d[2],
-                    'Profit': d[3]
-                }
-        return history
+            return line
 
 
 def inventory_to_string(inventory):
@@ -57,11 +45,8 @@ def inventory_to_string(inventory):
 
 
 def history_to_string(history):
-    st = ''
-    for key in history:
-        st += '\n{},{},{},{}\n'.format(key, history['Days Rented'],
-                                       history['Deposit'], history['Profit'])
-    return st.rstrip()
+    return '\n{},{},{},{}'.format(history['time'], history['days_rented'],
+                                  history['deposit'], history['profit'])
 
 
 def write_to_file_inv(inventory):
