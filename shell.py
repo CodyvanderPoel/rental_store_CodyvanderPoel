@@ -113,7 +113,6 @@ def main():
         write_to_file_inv(inventory)
         time = datetime.now()
         history = {
-            'name': vehicle,
             'time': time,
             'days_rented': days,
             'deposit': fee_1,
