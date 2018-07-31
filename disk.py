@@ -29,8 +29,10 @@ def open_file_history():
     with open('history.txt') as file:
         string = file.read()
         lines = string.split('\n')[1:]
+        st = ''
         for line in lines:
-            return line
+            st += '{}\n'.format(line)
+        return st.lstrip()
 
 
 def inventory_to_string(inventory):
