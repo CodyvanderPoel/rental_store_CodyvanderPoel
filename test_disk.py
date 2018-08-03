@@ -13,9 +13,9 @@ inventory = {
 }
 history = {
     '2018-07-30 10:57:38.919233': {
-        'Days_rented': '7',
-        'Deposit': '1000.0',
-        'Profit': '127.33'
+        'days_rented': '7',
+        'deposit': '1000.0',
+        'profit': '127.33'
     }
 }
 
