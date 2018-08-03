@@ -30,3 +30,13 @@ def make_inv_options(inventory):
         '{}--{}'.format(str(i + 1), item['Name'])
         for i, item in enumerate(inventory.values())
     ])
+
+
+def make_history(time, days, fee_1, fee_2):
+    history = {
+        'time': time,
+        'days_rented': days,
+        'deposit': fee_1,
+        'profit': fee_2
+    }
+    return history
