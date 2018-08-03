@@ -30,7 +30,10 @@ def customer_return(inventory):
             vehicle = inventory[choice]
             if can_return(vehicle) == True:
                 vehicle['Stock'] += 1
-                print('Thank You for returning our vehicle! Have A Good Day!')
+                fee = deposit_fee(vehicle)
+                print(
+                    f'Thank You for returning our vehicle! Here is your deposit of ${fee}. Have A Good Day!'
+                )
                 write_to_file_inv(inventory)
             else:
                 print(
@@ -112,12 +115,7 @@ def main():
         print('Have A Good Day!')
         write_to_file_inv(inventory)
         time = datetime.now()
-        history = {
-            'time': time,
-            'days_rented': days,
-            'deposit': fee_1,
-            'profit': fee_2
-        }
+        history = make_history(time, days, fee_1, fee_2)
         write_to_file_history(history)
     else:
         employee_options()
