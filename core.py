@@ -34,8 +34,9 @@ def make_inv_options(inventory):
 
 def employee_inv(inv):
     return '\n'.join([
-        '{}--{}'.format(str(i + 1), item)
-        for i, item in enumerate(inv.values())
+        '{}--{}, Stock: {}, Replacement Fee: {}, Daily Fee: {}'.format(
+            str(i + 1), item['Name'], item['Stock'], item['Replacement_fee'],
+            item['Daily_fee']) for i, item in enumerate(inv.values())
     ])
 
 
