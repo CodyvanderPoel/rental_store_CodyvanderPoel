@@ -1,18 +1,18 @@
-def parse_inventory_item(string):
-    number, name, stock, replacement_fee, rental_fee = string.split(',')
+def parse_inventory_item(keys):
+    number, name, stock, replacement_fee, rental_fee = keys.split(',')
     return [number, name, int(stock), int(replacement_fee), int(rental_fee)]
 
 
-def parse_history_item(string):
-    time, days_rented, deposit, profit = string.split(',')
+def parse_history_item(keys):
+    time, days_rented, deposit, profit = keys.split(',')
     return [time, days_rented, deposit, profit]
 
 
 def open_file(file_name):
     with open(file_name) as file:
-        string = file.read()
+        keys = file.read()
         inventory = {}
-        lines = string.split('\n')[1:]
+        lines = keys.split('\n')[1:]
         for line in lines:
             if line:
                 d = parse_inventory_item(line)
@@ -22,13 +22,13 @@ def open_file(file_name):
                     'Replacement_fee': d[3],
                     'Daily_fee': d[4]
                 }
-        return inventory
+    return inventory
 
 
 def open_file_history():
     with open('history.txt') as file:
-        string = file.read()
-        lines = string.split('\n')[1:]
+        keys = file.read()
+        lines = keys.split('\n')[1:]
         st = ''
         for line in lines:
             st += '{}\n'.format(line)
