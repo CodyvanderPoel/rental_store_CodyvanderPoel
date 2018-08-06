@@ -32,7 +32,7 @@ def make_inv_options(inventory):
     ])
 
 
-def show_employee_inv(inv):
+def employee_inv(inv):
     return '\n'.join([
         '{}--{}'.format(str(i + 1), item)
         for i, item in enumerate(inv.values())
