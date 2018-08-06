@@ -82,6 +82,7 @@ def employee_options():
         choice = input('What would you like to do?')
         if choice == '1':
             inv = open_file('inventory.txt')
+            inv = show_employee_inv(inv)
             print(inv)
         elif choice == '2':
             receipt = open_file_history()
