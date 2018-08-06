@@ -82,7 +82,7 @@ def test_make_inv_options2():
 def test_employee_inv():
     result = employee_inv(inventory1)
 
-    assert result == "1--{'Name': 'Sedan', 'Stock': 10, 'Replacement_fee': 5000, 'Daily_fee': 12}\n2--{'Name': 'SUV', 'Stock': 10, 'Replacement_fee': 7000, 'Daily_fee': 15}\n3--{'Name': 'Truck', 'Stock': 0, 'Replacement_fee': 12500, 'Daily_fee': 20}"
+    assert result == "1--Sedan, Stock: 10, Replacement Fee: 5000, Daily Fee: 12\n2--SUV, Stock: 10, Replacement Fee: 7000, Daily Fee: 15\n3--Truck, Stock: 0, Replacement Fee: 12500, Daily Fee: 20"
 
 
 def test_make_history():
