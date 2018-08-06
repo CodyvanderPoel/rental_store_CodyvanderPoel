@@ -14,7 +14,7 @@ def login():
             sleep(.5)
             return choice
         elif choice.upper() == 'E':
-            print("Welcome to Cody's Car Rental database!")
+            cprint("Welcome to Cody's Car Rental database!", "blue")
             sleep(.5)
             return choice
         elif choice.upper() == 'L':
