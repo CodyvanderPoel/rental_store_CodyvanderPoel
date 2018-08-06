@@ -12,11 +12,10 @@ inventory = {
     }
 }
 history = {
-    '2018-07-30 10:57:38.919233': {
-        'days_rented': '7',
-        'deposit': '1000.0',
-        'profit': '127.33'
-    }
+    'time': '2018-07-30 10:57:38.919233',
+    'days_rented': '7',
+    'deposit': '1000.0',
+    'profit': '127.33'
 }
 
 
@@ -56,7 +55,7 @@ def test_open_file():
 def test_open_file_history():
     result = open_file_history()
 
-    assert result == '2018-07-30 10:57:38.919233, 7,1000.0, 127.33'
+    assert result == '2018-07-30 10:57:38.919233,7,1000.0,127.33\n'
 
 
 def test_inventory_to_string():
