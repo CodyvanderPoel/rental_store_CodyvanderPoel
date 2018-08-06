@@ -1,5 +1,7 @@
 from core import *
 from disk import *
+import sys
+from termcolor import colored, cprint
 from time import sleep
 from datetime import datetime
 
@@ -8,7 +10,7 @@ def login():
     while True:
         choice = input("[C]ustomer or [E]mployee or [L]eave:")
         if choice.upper() == 'C':
-            print("Welcome To Cody's Car Rental!")
+            cprint("Welcome To Cody's Car Rental!", 'cyan')
             sleep(.5)
             return choice
         elif choice.upper() == 'E':
@@ -19,7 +21,10 @@ def login():
             print("Have A Good Day!")
             exit()
         else:
-            print("The option you have chosen is not available!")
+            cprint(
+                'THAT IS NOT AN OPTION!\nLOGIN ERROR 5345',
+                'red',
+                attrs=['blink'])
 
 
 def customer_return(inventory):
@@ -36,12 +41,12 @@ def customer_return(inventory):
                 )
                 write_to_file_inv(inventory)
             else:
-                print(
-                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.'
-                )
+                cprint(
+                    'I am sorry to say this, but this vehicle is not ours. Please leave the premises.',
+                    'red')
             exit()
         else:
-            print('That is not an option!')
+            cprint('That is not an option!', 'red')
 
 
 def customer_rental(inventory):
@@ -55,7 +60,7 @@ def customer_rental(inventory):
                 vehicle['Stock'] -= 1
                 return vehicle
         else:
-            print('That is not an option!')
+            cprint('That is not an option!', 'red')
 
 
 def customer_options(inventory):
@@ -71,7 +76,7 @@ def customer_options(inventory):
             print('Have A Good Day!')
             exit()
         else:
-            print('That is not an option!')
+            cprint('That is not an option!', 'red')
 
 
 def employee_options():
@@ -91,7 +96,7 @@ def employee_options():
             print('Have A Good Day!')
             exit()
         else:
-            print('That is not an option!')
+            cprint('That is not an option!', 'red')
 
 
 def get_days():
@@ -100,26 +105,29 @@ def get_days():
         if days.isdigit():
             return days
         else:
-            print('I am sorry that is not a number sir')
+            cprint('I am sorry that is not a number sir', 'red')
 
 
 def main():
-    choice = login()
-    if choice.upper() == 'C':
-        inventory = open_file('inventory.txt')
-        vehicle = customer_options(inventory)
-        fee_1 = deposit_fee(vehicle)
-        print(f'The deposit fee is ${fee_1}')
-        days = get_days()
-        fee_2 = total_rental_fee(vehicle, days)
-        print(f'The total rental fee is ${fee_2}')
-        print('Have A Good Day!')
-        write_to_file_inv(inventory)
-        time = datetime.now()
-        history = make_history(time, days, fee_1, fee_2)
-        write_to_file_history(history)
-    else:
-        employee_options()
+    store = True
+    while store != False:
+        choice = login()
+        if choice.upper() == 'C':
+            inventory = open_file('inventory.txt')
+            vehicle = customer_options(inventory)
+            fee_1 = deposit_fee(vehicle)
+            print(f'The deposit fee is ${fee_1}')
+            days = get_days()
+            fee_2 = total_rental_fee(vehicle, days)
+            print(f'The total rental fee is ${fee_2}')
+            print('Have A Good Day!')
+            write_to_file_inv(inventory)
+            time = datetime.now()
+            history = make_history(time, days, fee_1, fee_2)
+            write_to_file_history(history)
+            store = False
+        elif choice.upper() == 'E':
+            employee_options()
 
 
 if __name__ == '__main__':
