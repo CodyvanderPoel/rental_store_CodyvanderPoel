@@ -32,6 +32,13 @@ def make_inv_options(inventory):
     ])
 
 
+def show_employee_inv(inv):
+    return '\n'.join([
+        '{}--{}'.format(str(i + 1), item)
+        for i, item in enumerate(inv.values())
+    ])
+
+
 def make_history(time, days, fee_1, fee_2):
     history = {
         'time': time,
