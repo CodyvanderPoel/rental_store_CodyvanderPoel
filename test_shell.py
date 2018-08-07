@@ -16,11 +16,3 @@ def test_employee_login(output):
     result = login()
 
     assert "e" in result
-
-
-@with_inputs('l')
-@should_print
-def test_leave_login(output):
-    result = login()
-
-    assert None in result
